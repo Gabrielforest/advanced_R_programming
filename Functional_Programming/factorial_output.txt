@@ -1,0 +1,41 @@
+### Comparing factorial functions performance with the following inputs: 4, 30 and 1000
+
+
+> microbenchmark::microbenchmark(Factorial_loop(4),
++                                Factorial_reduce(4),
++                                Factorial_func(4),
++                                Factorial_mem(4))
+Unit: nanoseconds
+                expr   min      lq     mean median      uq    max neval cld
+   Factorial_loop(4)  2302  2600.5  3078.93   2801  3001.5  13300   100  b 
+ Factorial_reduce(4) 38301 39451.0 43412.86  40251 42800.0 145901   100   c
+   Factorial_func(4)  2201  2301.0  2648.04   2401  2502.0   7001   100 ab 
+    Factorial_mem(4)   500   601.0   732.94    700   701.0   3001   100 a  
+
+
+
+> microbenchmark::microbenchmark(Factorial_loop(30),
++                                Factorial_reduce(30),
++                                Factorial_func(30),
++                                Factorial_mem(30))
+Unit: nanoseconds
+                 expr   min      lq      mean  median      uq    max neval cld
+   Factorial_loop(30)  3001  3201.0   3691.96  3650.5  3901.0   8701   100 a  
+ Factorial_reduce(30) 92601 94901.5 101404.10 96651.0 99450.5 272701   100   c
+   Factorial_func(30) 14300 14701.0  16010.99 15001.0 15701.0  30501   100  b 
+    Factorial_mem(30)   500   601.0    780.91   701.0   851.0   2901   100 a  
+
+
+
+> microbenchmark::microbenchmark(Factorial_loop(1000),
++                                Factorial_reduce(1000),
++                                Factorial_func(1000),
++                                Factorial_mem(1000))
+Unit: microseconds
+                   expr      min        lq       mean   median        uq      max neval cld
+   Factorial_loop(1000)   25.600   28.0505   31.13986   30.201   33.2515   45.601   100 a  
+ Factorial_reduce(1000) 1203.101 1267.6010 1583.07400 1323.151 1464.4010 5232.901   100   c
+   Factorial_func(1000)  513.301  535.2510  631.86691  548.801  606.5510 2040.602   100  b 
+    Factorial_mem(1000)    1.400    1.6010    5.12806    3.101    4.7010  126.401   100 a  
+
+
